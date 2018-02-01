@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/leoyoung07/L-NodeWechat/issues"
   },
-  "homepage": "https://github.com/leoyoung07/L-NodeWechat#readme"
+  "homepage": "https://github.com/leoyoung07/L-NodeWechat#readme",
+  "dependencies": {
+    "koa": "^2.4.1"
+  }
 }
