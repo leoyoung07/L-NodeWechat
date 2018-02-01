@@ -1,4 +1,4 @@
-import * as Koa from 'koa';
+import Koa from 'koa';
 const app: Koa = new Koa();
 
 app.use(async ctx => {
