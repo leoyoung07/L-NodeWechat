@@ -1,0 +1,23 @@
+{
+  "name": "l-node-wechat",
+  "version": "0.0.1",
+  "description": "A node.js wechat service",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoyoung07/L-NodeWechat.git"
+  },
+  "keywords": [
+    "wechat",
+    "node"
+  ],
+  "author": "Leo Young",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leoyoung07/L-NodeWechat/issues"
+  },
+  "homepage": "https://github.com/leoyoung07/L-NodeWechat#readme"
+}
