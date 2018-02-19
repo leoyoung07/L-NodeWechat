@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": [
+    "plugin:vue/essential",
+    "@vue/prettier",
+    "@vue/typescript"
+  ],
+  "rules": {
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "semi": ["error", "always"],
+    "comma-dangle": ["error", "never"]
+  }
+}
