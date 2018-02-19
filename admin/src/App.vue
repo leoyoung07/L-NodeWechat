@@ -1,32 +1,75 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <el-container>
+      <el-header class="header" height="auto">
+        <div class="header__content">
+          Header
+        </div>
+      </el-header>
+      <el-container>
+        <el-aside width="auto">
+          <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+            <el-radio-button :label="false">展开</el-radio-button>
+            <el-radio-button :label="true">收起</el-radio-button>
+          </el-radio-group>
+          <el-menu
+              default-active="1-4-1"
+              class="el-menu-vertical-demo"
+              @open="handleOpen"
+              @close="handleClose"
+              :collapse="isCollapse"
+              :router="true">
+            <el-menu-item index="/">
+              <i class="el-icon-menu"></i>
+              <span slot="title">Home</span>
+            </el-menu-item>
+            <el-menu-item index="/about">
+              <i class="el-icon-menu"></i>
+              <span slot="title">About</span>
+            </el-menu-item>
+          </el-menu>
+        </el-aside>
+        <el-main>
+          <router-view/>
+        </el-main>
+      </el-container>
+      <el-footer class="footer" height="auto">
+        <div class="footer__content">
+          Footer
+        </div>
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component
+export default class HelloWorld extends Vue {
+  private isCollapse: boolean = false;
+
+  private handleOpen() {}
+
+  private handleClose() {}
+}
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
-
-#nav {
-  padding: 30px;
+.footer {
+  position: fixed;
+  bottom: 0;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.header__content,
+.footer__content {
+  height: 40px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  line-height: 20px;
 }
 </style>
