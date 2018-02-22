@@ -3,28 +3,16 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import KoaStatic from 'koa-static';
 import config from '../config/config.json';
+import wxCallbackHandler from './wxCallbackHandler';
 
 const app: Koa = new Koa();
 const router: Router = new Router();
 
-const wechatCallback = wechat({
+const wxCallbackMiddleware = wechat({
   appid: config.appid,
   encodingAESKey: config.encodingAESKey,
   token: config.token
-}).middleware(async (message, context) => {
-  let response = '';
-  if (typeof message === 'string') {
-    response = message;
-  } else if (message.MsgType === 'text') {
-    response = message.Content;
-  } else {
-    response = JSON.stringify(message);
-  }
-  return {
-    content: response,
-    type: 'text'
-  };
-});
+}).middleware(wxCallbackHandler);
 
 router.all(/\/admin$/gi, ctx => {
   ctx.redirect('/admin/');
@@ -33,7 +21,7 @@ router.all(/\/admin$/gi, ctx => {
 
 router.all(/\/admin.*/gi, KoaStatic(__dirname, {format: false, index: 'index.html'}));
 
-router.all('/service/wx_callback', wechatCallback);
+router.all('/service/wx_callback', wxCallbackMiddleware);
 
 router.all(/\/.*/gi, ctx => {
   ctx.type = 'text/html';
