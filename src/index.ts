@@ -26,6 +26,11 @@ const wechatCallback = wechat({
   };
 });
 
+router.all(/\/admin$/gi, ctx => {
+  ctx.redirect('/admin/');
+  ctx.status = 301;
+});
+
 router.all(/\/admin.*/gi, KoaStatic(__dirname, {format: false, index: 'index.html'}));
 
 router.all('/service/wx_callback', wechatCallback);
