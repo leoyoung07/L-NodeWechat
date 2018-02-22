@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/leoyoung07/L-NodeWechat#readme",
   "dependencies": {
+    "co-wechat": "^2.3.0",
     "koa": "^2.4.1",
     "koa-static": "^4.0.2"
   },
